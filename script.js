@@ -12,6 +12,7 @@ function handleListsPage() {
     const dialogTitle = document.getElementById('dialog-title');
     const listNameInput = document.getElementById('list-name-input');
     const addListBtn = document.getElementById('add-list-btn');
+    const cancelListBtn = document.getElementById('cancel-list-btn');
     let currentEditingListId = null;
 
     const getLists = () => JSON.parse(localStorage.getItem('shoppingLists')) || [];
@@ -103,9 +104,13 @@ function handleListsPage() {
         dialog.show();
     });
 
-    dialog.addEventListener('close', (e) => {
-        if (e.target.returnValue !== 'save') return;
+    //incluído para fechar o diálogo quando cancelar
+    cancelListBtn.addEventListener('click', () => {
+        dialog.close();
+    });
 
+    dialog.addEventListener('close', (e) => {
+       
         const listName = listNameInput.value.trim();
         if (listName === '') return;
 
@@ -132,6 +137,7 @@ function handleItemsPage() {
     const dialogTitle = document.getElementById('item-dialog-title');
     const itemNameInput = document.getElementById('item-name-input');
     const addItemBtn = document.getElementById('add-item-btn');
+    const cancelItemBtn = document.getElementById('cancel-item-btn');
 
     const urlParams = new URLSearchParams(window.location.search);
     const listId = urlParams.get('id');
@@ -226,9 +232,13 @@ function handleItemsPage() {
         dialog.show();
     });
 
-    dialog.addEventListener('close', (e) => {
-        if (e.target.returnValue !== 'save') return;
+    //incluído para fechar o diálogo quando cancelar
+    cancelItemBtn.addEventListener('click', () => {
+        dialog.close();
+    });
 
+    dialog.addEventListener('close', (e) => {
+        
         const itemName = itemNameInput.value.trim();
         if (itemName === '') return;    
 
