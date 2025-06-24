@@ -6,7 +6,6 @@ if (path.includes('index.html') || path === '/') {
     handleItemsPage();
 }
 
-
 function handleListsPage() {
     const listsContainer = document.getElementById('shopping-lists');
     const dialog = document.getElementById('list-dialog');
@@ -96,7 +95,7 @@ function handleListsPage() {
 
     addListBtn.addEventListener('click', () => {
         currentEditingListId = null;
-        dialogTitle.textContent = 'Nova Lista de Compras';
+        dialogTitle.textContent = 'Nova Lista';
         listNameInput.value = '';
         dialog.show();
     });

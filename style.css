@@ -54,12 +54,12 @@ md-checkbox {
 }
 
 md-icon-button {
-    color: #5f6368;
+    color: #72777e;
 }
 
 .completed {
     text-decoration: line-through;
-    color: #5f6368;
+    color: #61676e;
 }
 
 md-fab {
