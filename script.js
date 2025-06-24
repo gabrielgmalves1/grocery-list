@@ -1,4 +1,3 @@
-
 const path = window.location.pathname;
 if (path.includes('index.html') || path === '/') {
     handleListsPage();
@@ -6,6 +5,7 @@ if (path.includes('index.html') || path === '/') {
     handleItemsPage();
 }
 
+//Function de Listas
 function handleListsPage() {
     const listsContainer = document.getElementById('shopping-lists');
     const dialog = document.getElementById('list-dialog');
@@ -41,14 +41,17 @@ function handleListsPage() {
             actions.slot = 'end';
             actions.className = 'item-actions';
 
-            const checkbox = document.createElement('md-checkbox');
-            checkbox.checked = list.completed;
-            checkbox.addEventListener('change', (e) => toggleListCompleted(list.id, e.target.checked));
+            const statusBtn = document.createElement('md-icon-button');
+            const statusIcon = document.createElement('md-icon');
+            statusIcon.textContent = 'check_circle';
+            statusIcon.style.color = list.completed ? '#4caf50' : '#bdbdbd';
+            statusBtn.appendChild(statusIcon);
+            statusBtn.addEventListener('click', () => toggleListCompleted(list.id, !list.completed));
 
             const editBtn = createIconButton('edit', () => openEditDialog(list));
             const deleteBtn = createIconButton('delete', () => deleteList(list.id));
             
-            actions.append(checkbox, editBtn, deleteBtn);
+            actions.append(statusBtn, editBtn, deleteBtn);
             listItem.append(headline, actions);
             
             headline.style.cursor = 'pointer';
@@ -121,6 +124,7 @@ function handleListsPage() {
     renderLists();
 }
 
+//Function de Itens
 function handleItemsPage() {
     const listNameHeader = document.getElementById('list-name-header');
     const itemsContainer = document.getElementById('list-items');
@@ -166,10 +170,13 @@ function handleItemsPage() {
             actions.slot = 'end';
             actions.className = 'item-actions';
 
-            const checkbox = document.createElement('md-checkbox');
-            checkbox.checked = item.completed;
-            checkbox.addEventListener('change', () => {
-                item.completed = checkbox.checked;
+            const statusBtn = document.createElement('md-icon-button');
+            const statusIcon = document.createElement('md-icon');
+            statusIcon.textContent = 'check_circle';
+            statusIcon.style.color = item.completed ? '#4caf50' : '#bdbdbd';
+            statusBtn.appendChild(statusIcon);
+            statusBtn.addEventListener('click', () => {
+                item.completed = !item.completed;
                 saveCurrentList();
                 renderItems();
             });
@@ -188,7 +195,7 @@ function handleItemsPage() {
                 }
             });
             
-            actions.append(checkbox, editBtn, deleteBtn);
+            actions.append(statusBtn, editBtn, deleteBtn);
             listItem.append(headline, actions);
             itemsContainer.appendChild(listItem);
         });

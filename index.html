@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App para Lista de Compras</title>
+    <title>App - Lista de Compras</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
 
     <div class="container">
         <header>
-            <h1>Lista de Compras</h1>
+            <h1>Listas de Compras</h1>
         </header>
 
         <main>
@@ -25,13 +25,13 @@
     </div>
 
     <md-dialog id="list-dialog">
-        <div slot="headline" id="dialog-title">Nova Lista de Compras</div>
+        <div slot="headline" id="dialog-title">Nova Lista</div>
         <form slot="content" id="list-form" method="dialog">
             <md-filled-text-field label="Nome da Lista" required id="list-name-input" value="">
             </md-filled-text-field>
         </form>
         <div slot="actions">
-            <md-text-button form="list-form" value="cancel" id="cancel-list-btn">Cancelar</md-text-button>
+            <md-text-button value="cancel" id="cancel-list-btn">Cancelar</md-text-button> <!-- alterado removido o atributo form -->
             <md-text-button form="list-form" value="save" id="save-list-btn">Salvar</md-text-button>
         </div>
     </md-dialog>
