@@ -1,4 +1,4 @@
-// --- ROTEAMENTO E INICIALIZAÇÃO ---
+
 const path = window.location.pathname;
 if (path.includes('index.html') || path === '/') {
     handleListsPage();
@@ -6,7 +6,7 @@ if (path.includes('index.html') || path === '/') {
     handleItemsPage();
 }
 
-// --- LÓGICA DA PÁGINA DE LISTAS (index.html) ---
+
 function handleListsPage() {
     const listsContainer = document.getElementById('shopping-lists');
     const dialog = document.getElementById('list-dialog');
@@ -52,7 +52,6 @@ function handleListsPage() {
             actions.append(checkbox, editBtn, deleteBtn);
             listItem.append(headline, actions);
             
-            // Clicar no nome da lista leva para a página de itens
             headline.style.cursor = 'pointer';
             headline.addEventListener('click', () => {
                 window.location.href = `lista.html?id=${list.id}`;
@@ -62,7 +61,6 @@ function handleListsPage() {
         });
     };
     
-    // Funções auxiliares e de eventos
     const createIconButton = (iconName, onClick) => {
         const btn = document.createElement('md-icon-button');
         const icon = document.createElement('md-icon');
@@ -124,17 +122,7 @@ function handleListsPage() {
     renderLists();
 }
 
-// --- LÓGICA DA PÁGINA DE ITENS (lista.html) ---
-// (A lógica para a página de itens segue um padrão muito similar à da página de listas)
-// Para manter a resposta concisa, o código completo para 'handleItemsPage' seria uma adaptação
-// direta do que está acima, trocando 'list' por 'item' e operando no array 'currentList.items'.
-// A estrutura do script original pode ser facilmente adaptada para os novos componentes.
 function handleItemsPage() {
-    // Esta função seria muito similar a handleListsPage, mas para os itens.
-    // Ela pegaria o ID da lista da URL, encontraria a lista, e renderizaria os 'md-list-item' para cada item.
-    // As funções de criar, editar, deletar e marcar como completo seriam adaptadas para os itens.
-    
-    // Esboço simplificado:
     const listNameHeader = document.getElementById('list-name-header');
     const itemsContainer = document.getElementById('list-items');
     const dialog = document.getElementById('item-dialog');
@@ -165,7 +153,7 @@ function handleItemsPage() {
             itemsContainer.appendChild(emptyItem);
             return;
         }
-        // ... Lógica de renderização similar a 'renderLists' ...
+
         currentList.items.forEach(item => {
             const listItem = document.createElement('md-list-item');
             listItem.dataset.id = item.id;
@@ -219,7 +207,7 @@ function handleItemsPage() {
         icon.textContent = iconName;
         btn.appendChild(icon);
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita acionar outros cliques
+            e.stopPropagation();
             onClick();
         });
         return btn;

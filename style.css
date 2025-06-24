@@ -3,7 +3,6 @@ html, body {
     font-optical-sizing: auto;
 }
 
-/* Layout principal */
 .container {
     max-width: 800px;
     margin: auto;
@@ -35,11 +34,10 @@ h1 {
     text-decoration: none;
 }
 
-/* Estilização da lista e itens */
 md-list {
     background-color: #f1f5f9;
     border-radius: 12px;
-    padding: 8px 0 !important; /* Sobrescreve o padrão do componente */
+    padding: 8px 0 !important;
 }
 
 md-list-item {
@@ -51,30 +49,25 @@ md-list-item {
     align-items: center;
 }
 
-/* Checkbox precisa de um pequeno ajuste de posicionamento */
 md-checkbox {
     margin-right: 8px;
 }
 
-/* Ícones de ação (editar, deletar) */
 md-icon-button {
     color: #5f6368;
 }
 
-/* Estilo para item completado */
 .completed {
     text-decoration: line-through;
     color: #5f6368;
 }
 
-/* Botão flutuante (FAB) */
 md-fab {
     position: fixed;
     bottom: 24px;
     right: 24px;
 }
 
-/* Campo de texto dentro do Dialog */
 md-filled-text-field {
     width: 100%;
 }

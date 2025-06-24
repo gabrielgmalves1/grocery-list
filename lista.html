@@ -19,7 +19,7 @@
 
         <main>
             <md-list id="list-items">
-                </md-list>
+            </md-list>
         </main>
 
         <md-fab variant="primary" id="add-item-btn" aria-label="Adicionar Item">
@@ -30,15 +30,11 @@
     <md-dialog id="item-dialog">
         <div slot="headline" id="item-dialog-title">Novo Item</div>
         <form slot="content" id="item-form" method="dialog">
-            <md-filled-text-field
-                label="Nome do Item"
-                required
-                id="item-name-input"
-                value="">
+            <md-filled-text-field label="Nome do Item" required id="item-name-input" value="">    
             </md-filled-text-field>
         </form>
         <div slot="actions">
-            <md-text-button form="item-form" value="cancel">Cancelar</md-text-button>
+            <md-text-button form="item-form" value="cancel" id="cancel-item-btn">Cancelar</md-text-button>
             <md-text-button form="item-form" value="save" id="save-item-btn">Salvar</md-text-button>
         </div>
     </md-dialog>
