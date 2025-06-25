@@ -1,4 +1,4 @@
-body {
+body, md-list, md-list * {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -73,4 +73,9 @@ md-fab {
 
 md-filled-text-field {
     width: 100%;
+}
+
+md-icon, .material-symbols-outlined {
+    font-family: "Material Symbols Outlined", sans-serif !important;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
