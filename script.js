@@ -136,6 +136,7 @@ function handleItemsPage() {
     const dialog = document.getElementById('item-dialog');
     const dialogTitle = document.getElementById('item-dialog-title');
     const itemNameInput = document.getElementById('item-name-input');
+    const itemPriceInput = document.getElementById('item-price-input'); /*criando o input de valor na caixa de dialogo dos itens*/
     const addItemBtn = document.getElementById('add-item-btn');
     const cancelItemBtn = document.getElementById('cancel-item-btn');
 
@@ -166,11 +167,17 @@ function handleItemsPage() {
         currentList.items.forEach(item => {
             const listItem = document.createElement('md-list-item');
             listItem.dataset.id = item.id;
-            
+                        
             const headline = document.createElement('div');
             headline.slot = 'headline';
             headline.className = item.completed ? 'completed' : '';
             headline.textContent = item.name;
+
+            /*criando a div do preço e recebendo o valor de item-price*/
+            const priceDiv = document.createElement('div');
+            priceDiv.textContent = `R$ ${item.price?.toFixed(2) || '0.00'}`;
+            priceDiv.className = 'item-price';
+            headline.appendChild(priceDiv);
             
             const actions = document.createElement('div');
             actions.slot = 'end';
@@ -205,6 +212,17 @@ function handleItemsPage() {
             listItem.append(headline, actions);
             itemsContainer.appendChild(listItem);
         });
+
+        /*aqui listamos o total das somas fora do for each de cada item - total externo*/
+        const total = currentList.items.reduce((sum, item) => sum + (item.price || 0), 0);
+        let totalDiv = document.getElementById('total-footer');
+        if (!totalDiv) {
+            totalDiv = document.createElement('div');
+            totalDiv.id = 'total-footer';
+            itemsContainer.parentElement.appendChild(totalDiv);
+        }
+        /*aqui monta a div do total externa com o retorno da TotalDiv acima*/
+        totalDiv.textContent = `Total: R$ ${total.toFixed(2)}`;
     };
 
     const saveCurrentList = () => {
@@ -242,11 +260,15 @@ function handleItemsPage() {
         const itemName = itemNameInput.value.trim();
         if (itemName === '') return;    
 
+        /*criando a constante para guardar o valor - na caixa de dialogo dos itens*/
+        const price = parseFloat(itemPriceInput.value) || 0;
+
         if (currentEditingItemId) {
             const itemToUpdate = currentList.items.find(i => i.id === currentEditingItemId);
             itemToUpdate.name = itemName;
+            itemToUpdate.price = price; /*incluido o campo PRICE aqui para gravar quando editar*/
         } else {
-            currentList.items.push({ id: Date.now().toString(), name: itemName, completed: false });
+            currentList.items.push({ id: Date.now().toString(), name: itemName, price: price, completed: false }); /*incluido o campo PRICE aqui para gravar quando criar novo*/
         }
         
         saveCurrentList();
@@ -254,4 +276,5 @@ function handleItemsPage() {
     });
 
     renderItems();
+
 }

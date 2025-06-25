@@ -30,8 +30,8 @@
     <md-dialog id="item-dialog">
         <div slot="headline" id="item-dialog-title">Novo Item</div>
         <form slot="content" id="item-form" method="dialog">
-            <md-filled-text-field label="Nome do Item" required id="item-name-input" value="">    
-            </md-filled-text-field>
+            <md-filled-text-field label="Nome do Item" required id="item-name-input" value=""></md-filled-text-field>
+            <md-filled-text-field label="Preço" type="number" id="item-price-input" value="" step="0.01" min="0"></md-filled-text-field>
         </form>
         <div slot="actions">
             <md-text-button value="cancel" id="cancel-item-btn">Cancelar</md-text-button>
