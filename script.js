@@ -155,6 +155,18 @@ function handleItemsPage() {
 
     listNameHeader.textContent = currentList.name;
 
+    const clearListBtn = document.getElementById('clear-list-btn'); /*criando botão para limpeza de itens*/
+
+    clearListBtn.addEventListener('click', () => {
+        if(confirm('Tem certeza que deseja limpar todos os itens desta lista?')) {
+            currentList.items = [];
+            const totalDiv = document.getElementById('total-footer');
+            if (totalDiv) totalDiv.remove(); // Remove o campo do total toda vez que limpar a lista
+            saveCurrentList();
+            renderItems();
+        }
+    });
+
     const renderItems = () => {
         itemsContainer.innerHTML = '';
         if (currentList.items.length === 0) {
