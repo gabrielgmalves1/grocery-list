@@ -18,6 +18,16 @@ function handleListsPage() {
     const getLists = () => JSON.parse(localStorage.getItem('shoppingLists')) || [];
     const saveLists = (lists) => localStorage.setItem('shoppingLists', JSON.stringify(lists));
 
+    /*cria integração do botão de limpar lista*/
+    const clearBtn = document.getElementById('clear-btn');
+
+    clearBtn.addEventListener('click', () => {
+        if (confirm('Tem certeza que deseja limpar todas as listas?')) {
+            localStorage.removeItem('shoppingLists');
+            renderLists();
+        }
+    });
+
     const renderLists = () => {
         const lists = getLists();
         listsContainer.innerHTML = ''; 

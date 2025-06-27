@@ -82,7 +82,7 @@ md-icon, .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/*seletor para modificar a estiização e posicionamento do total de itens no rodapé*/
+/*seletor para modificar a estiização e posicionamento do total R$ de itens no rodapé*/
 #total-footer {
     margin-top: 24px;
     margin-bottom: 8px;
@@ -94,7 +94,7 @@ md-icon, .material-symbols-outlined {
 }
 
 /*seletor para modificar o botão de limpar itens da lista*/
-.clear-list-btn {
+.clear-btn {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -111,11 +111,11 @@ md-icon, .material-symbols-outlined {
     cursor: pointer;
     transition: background 0.2s, box-shadow 0.2s;
 }
-.clear-list-btn:hover {
+.clear-btn:hover {
     background: #b71c1c;
     box-shadow: 0 4px 12px rgba(183,28,28,0.18);
 }
-.clear-list-btn .material-symbols-outlined {
+.clear-btn .material-symbols-outlined {
     font-size: 1.4em;
     margin-right: 4px;
 }
